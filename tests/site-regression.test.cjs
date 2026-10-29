@@ -57,3 +57,12 @@ test('public site does not imply that payments or account creation are operation
   assert.doesNotMatch(html, /\\b(?:stripe|checkout\\.stripe\\.com|paypal\\.com)\\b/i, 'Unexpected payment integration');
   assert.match(html, /No purchase, trial, registration or payment is offered/i);
 });
+
+test('official KINDRA contact and feedback routes use the approved mailbox', () => {
+  const emailLinks = [...html.matchAll(/href="mailto:([^"?]+)\\?subject=([^"]+)"/gi)];
+  assert.equal(emailLinks.length, 2, 'Provide one enquiry and one feedback route');
+  for (const [, address] of emailLinks) assert.equal(address.toLowerCase(), 'hello.kindra.ai@gmail.com');
+  assert.ok(emailLinks.some(([, , subject]) => /enquiry/i.test(decodeURIComponent(subject))));
+  assert.ok(emailLinks.some(([, , subject]) => /feedback/i.test(decodeURIComponent(subject))));
+  assert.match(html, /links open your email application/i);
+});
