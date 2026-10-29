@@ -43,3 +43,17 @@ test('pricing and Maya status do not imply a live service', () => {
 test('motion reduction is available for sensitive visitors', () => {
   assert.match(html, /@media\s*\(prefers-reduced-motion:\s*reduce\)/i);
 });
+
+test('all interactive buttons are explicitly typed and have accessible names', () => {
+  for (const match of html.matchAll(/<button\\b([^>]*)>([\\s\\S]*?)<\\/button>/gi)) {
+    const attributes = match[1];
+    const label = match[2].replace(/<[^>]*>/g, '').trim();
+    assert.match(attributes, /\\btype="button"/i, 'Avoid implicit form submission');
+    assert.ok(label || /\\baria-label="[^"]+"/i.test(attributes), 'Button needs accessible name');
+  }
+});
+test('public site does not imply that payments or account creation are operational', () => {
+  assert.doesNotMatch(html, /<form\\b/i, 'Unexpected unreviewed data collection form');
+  assert.doesNotMatch(html, /\\b(?:stripe|checkout\\.stripe\\.com|paypal\\.com)\\b/i, 'Unexpected payment integration');
+  assert.match(html, /No purchase, trial, registration or payment is offered/i);
+});
