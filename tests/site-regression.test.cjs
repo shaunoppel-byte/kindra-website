@@ -66,3 +66,11 @@ test('official KINDRA contact and feedback routes use the approved mailbox', () 
   assert.ok(emailLinks.some(([, , subject]) => /feedback/i.test(decodeURIComponent(subject))));
   assert.match(html, /links open your email application/i);
 });
+
+test('contact section is reachable from primary navigation and explains email behavior', () => {
+  assert.match(html, /<nav[^>]*id="site-nav"[\\s\\S]*?href="#contact"/i);
+  assert.match(html, /id="contact"\\s+aria-labelledby="contact-title"/i);
+  assert.match(html, /id="contact-title"/i);
+  assert.match(html, /KINDRA does not collect your message on this website/i);
+  assert.match(html, /href="mailto:Hello\\.kindra\\.ai@gmail\\.com"/i);
+});
