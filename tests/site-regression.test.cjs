@@ -74,3 +74,15 @@ test('contact section is reachable from primary navigation and explains email be
   assert.match(html, /KINDRA does not collect your message on this website/i);
   assert.match(html, /href="mailto:Hello\.kindra\.ai@gmail\.com"/i);
 });
+
+test('hero image is prioritized and social previews remain configured', () => {
+  assert.match(html, /rel="preload" as="image" href="maya-kindra\.webp"/i);
+  assert.match(html, /src="maya-kindra\.webp"[^>]*loading="eager"[^>]*fetchpriority="high"/i);
+  assert.match(html, /property="og:image"/i);
+  assert.match(html, /name="twitter:description"/i);
+});
+test('anchor navigation and forced colors preserve accessible focus', () => {
+  assert.match(html, /scroll-padding-top:90px/);
+  assert.match(html, /@media\(forced-colors:active\)/);
+  assert.match(html, /scroll-behavior:auto!important/);
+});
