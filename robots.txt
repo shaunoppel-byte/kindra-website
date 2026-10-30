@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shaunoppel-byte.github.io/kindra-website/sitemap.xml
