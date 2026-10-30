@@ -86,3 +86,14 @@ test('anchor navigation and forced colors preserve accessible focus', () => {
   assert.match(html, /@media\(forced-colors:active\)/);
   assert.match(html, /scroll-behavior:auto!important/);
 });
+
+test('mobile contact actions have accessible touch targets and do not overflow', () => {
+  assert.match(html, /@media\(max-width:600px\)/);
+  assert.match(html, /\.contact-actions \.btn\{[^}]*min-height:48px/);
+  assert.match(html, /\.contact-email a\{overflow-wrap:anywhere\}/);
+  assert.match(html, /html\{overflow-x:clip\}/);
+});
+test('keyboard focus and reduced motion are preserved in mobile polish', () => {
+  assert.match(html, /a:focus-visible,button:focus-visible\{outline:3px solid/);
+  assert.match(html, /@media\(prefers-reduced-motion:reduce\)/);
+});
