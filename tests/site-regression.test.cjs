@@ -97,3 +97,15 @@ test('keyboard focus and reduced motion are preserved in mobile polish', () => {
   assert.match(html, /a:focus-visible,button:focus-visible\{outline:3px solid/);
   assert.match(html, /@media\(prefers-reduced-motion:reduce\)/);
 });
+
+test('SEO metadata and crawler files reflect the actual public website', () => {
+  const fs = require('node:fs');
+  const root = path.join(__dirname, '..');
+  const robots = fs.readFileSync(path.join(root, 'robots.txt'), 'utf8');
+  const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
+  assert.match(html, /type="application\/ld\+json"/);
+  assert.match(html, /"@type":"Organization"/);
+  assert.match(html, /"email":"Hello\.kindra\.ai@gmail\.com"/);
+  assert.match(robots, /Sitemap: https:\/\/shaunoppel-byte\.github\.io\/kindra-website\/sitemap\.xml/);
+  assert.match(sitemap, /<loc>https:\/\/shaunoppel-byte\.github\.io\/kindra-website\/<\/loc>/);
+});
