@@ -67,6 +67,14 @@ a:focus-visible,button:focus-visible{outline:3px solid #c75e54;outline-offset:4p
 .kindra-premiere__frame video{display:block;width:100%;aspect-ratio:16/9;height:auto;background:#090512;border-radius:clamp(9px,1.8vw,18px);object-fit:contain}
 .kindra-premiere__footer{margin:20px 0 0;color:#d6c7e0;font-size:.84rem;letter-spacing:.015em}
 .kindra-premiere__disclosure{margin:10px auto 0;max-width:740px;color:#c3b3cf;font-size:.75rem;line-height:1.6}
+/* Blueprint fidelity: cinematic glow, more luxurious frame and warm gold accents */
+.kindra-premiere{background:radial-gradient(ellipse 88% 58% at 52% 48%,#5c2365 0%,#351348 49%,#180825 100%)}
+.kindra-premiere:before{opacity:.68;background-image:radial-gradient(circle at 15% 18%,#f5d68d 0 1px,transparent 1.5px),radial-gradient(circle at 75% 26%,#e2bc70 0 1px,transparent 1.5px),radial-gradient(circle at 48% 76%,#e9d09a 0 1px,transparent 1.5px),radial-gradient(ellipse at 92% 7%,#efb85b45 0%,transparent 28%),radial-gradient(ellipse at 15% 90%,#d74ba24d 0%,transparent 35%);background-size:260px 240px,330px 290px,410px 340px,100% 100%,100% 100%}
+.kindra-premiere__frame{padding:3px;border:2px solid #ffe7a5;background:linear-gradient(115deg,#ffe8a2,#c98b3e 36%,#ffe7a5 64%,#a87535);box-shadow:0 0 0 1px #ffe8ad55,0 0 22px #ffbf6a70,0 0 64px #b5558e65,0 30px 85px #080413a8}
+.kindra-premiere__eyebrow{color:#f5cd7b;letter-spacing:.27em}
+.kindra-premiere__title{text-shadow:0 0 34px #f6d7ff27}
+.kindra-premiere__lead{color:#f4e5f6}
+.kindra-premiere__footer{color:#f6dfc7}
 @media(max-width:600px){.kindra-premiere{padding:52px 12px 62px}.kindra-premiere__lead{margin-bottom:24px}.kindra-premiere__frame{padding:2px}.kindra-premiere__eyebrow{letter-spacing:.16em}.kindra-premiere__footer{font-size:.78rem}}
 @media(prefers-reduced-motion:reduce){.kindra-premiere *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
@@ -76,7 +84,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #c75e54;outline-offset:4p
   <h2 class="kindra-premiere__title" id="kindra-film-title">Someone Who Gets You</h2>
   <p class="kindra-premiere__lead">Some connections begin with a conversation. Others begin with the feeling of being understood. Step into the world of KINDRA.</p>
   <div class="kindra-premiere__frame">
-   <video controls preload="metadata" playsinline poster="assets/kindra-film-poster.svg" aria-label="KINDRA promotional film — Someone Who Gets You">
+   <video controls preload="metadata" playsinline poster="assets/KINDRA_Approved_Blueprint_Poster.jpg" aria-label="KINDRA promotional film — Someone Who Gets You">
     <source src="assets/KINDRA_Final.mp4" type="video/mp4">
     Your browser does not support HTML5 video.
    </video>
